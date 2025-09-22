@@ -1,0 +1,21 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block title %} Show One Book {% endblock title %}
+
+{% block content %}
+  {% if book %}
+    <a href="{% url 'books.list_books' %}">Go Back</a>
+
+    <h1>Details of Book</h1>
+    <h2>{{ book.title }}</h2>
+    <h2>Author: {{ book.author }}</h2>
+
+    <p><strong>{{ book.title }}</strong> — Details and description placeholder.</p>
+
+    <img src="{% static book.image %}" alt="Cover for {{ book.title }}" width="200" height="200">
+  {% else %}
+    <p>Book not found.</p>
+    <a href="{% url 'books.list_books' %}">Back to list</a>
+  {% endif %}
+{% endblock content %}
